@@ -1,6 +1,15 @@
 {% extends "base.html" %} {% block title %}Thank You!{% endblock %} {% block
 content %}
 <h1>Thank you!</h1>
+<h2>Your Responses</h2>
+<ul>
+  {% for i, question in questions %}
+  <li>
+    <b>{{question.question}}</b> {% for response in responses[i] %} {{response}}
+    | {% endfor %}
+  </li>
+  {% endfor %}
+</ul>
 <p>
   We really appreciate you taking the time to complete our survey. Have a nice
   day!

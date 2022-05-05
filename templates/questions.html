@@ -4,10 +4,15 @@
 <p>{{survey.questions[number].question}}</p>
 <form action="/answers/{{number}}" method="POST">
     <select name="response">
-      {% for choice in survey.questions[number].choices %}
+      {% with survey = survey.questions[number] %}
+      {% for choice in survey.choices %}
       <option value="{{choice}}">{{choice}}</option>
       {% endfor %}
     </select>
+    {% if survey.allow_text %}
+    <input type="text" name="text" placeholder="enter response here">
+    {% endif %}
+    {% endwith %}
     <button>Submit</button>
   </form>
   {% endblock %}

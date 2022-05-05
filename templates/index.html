@@ -1,6 +1,14 @@
-{% extends "base.html" %} {% block title %}Survey App{% endblock %} {% block
-content %}
-<h1>{{survey.title}}</h1>
-<p>{{survey.instructions}}</p>
-<a href="/questions/0"><button>Begin Survey!</button></a>
+{% extends "base.html" %} {% block title %}Survey Selection Page{% endblock %}
+{% block content %}
+<h1>Survey Selection Page</h1>
+<p>Thank you for participating in our serveys!</p>
+<form action="/survey-select" method="POST">
+  <label for="survey">Please select a survey.</label>
+  <select name="survey" id="survey">
+    {% for survey in surveys %}
+    <option value="{{survey}}">{{survey}}</option>
+    {% endfor %}
+  </select>
+  <button>Submit!</button>
+</form>
 {% endblock %}
